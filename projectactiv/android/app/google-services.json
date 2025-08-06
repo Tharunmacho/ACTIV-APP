@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "555238392596",
+    "project_id": "activ-923a4",
+    "storage_bucket": "activ-923a4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555238392596:android:98e85a22f842eaee163801",
+        "android_client_info": {
+          "package_name": "com.example.projectactiv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQrmwa27kVd40258k74h7zFOhEfr1gCDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
