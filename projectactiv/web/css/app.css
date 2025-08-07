@@ -1,0 +1,16 @@
+/* Override Flutter's webkit-appearance with standard property */
+flt-semantics input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Ensure compatibility for other webkit-appearance uses */
+button, [type="button"], [type="reset"], [type="submit"] {
+  appearance: button;
+  -webkit-appearance: button;
+}
+
+[type="search"] {
+  appearance: textfield;
+  -webkit-appearance: textfield;
+}

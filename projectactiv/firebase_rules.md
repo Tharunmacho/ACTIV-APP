@@ -14,9 +14,11 @@ service cloud.firestore {
     }
     
     // Member registrations - users can create/read their own registrations
-    match /member_registrations/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-      allow create: if request.auth != null && request.auth.uid == userId;
+    match /member_registrations/{registrationId} {
+      allow read, write: if request.auth != null && 
+        request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && 
+        request.auth.uid == request.resource.data.userId;
     }
     
     // Admin access (optional - add specific admin UIDs)
