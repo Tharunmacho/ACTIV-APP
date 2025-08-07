@@ -8,6 +8,7 @@ import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/member_registration_screen.dart';
 import 'screens/admin_registration_screen.dart';
+import 'screens/forgot_password_screen.dart';
 
 
 void main() async {
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/register': (context) => const MemberRegistrationScreen(),
         '/admin-register': (context) => const AdminRegistrationScreen(),
+        '/forgot-password': (context) => const ForgotPasswordScreen(),
       },
     );
   }
