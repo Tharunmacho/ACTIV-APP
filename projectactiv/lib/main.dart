@@ -3,7 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 import 'screens/onboarding_screen.dart';
-import 'screens/signup.dart'; // <-- Add this import
+import 'screens/signup.dart';
+import 'screens/login_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/member_registration_screen.dart';
+import 'screens/admin_registration_screen.dart';
 
 
 void main() async {
@@ -30,7 +34,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const OnboardingScreen(),
-        '/signup': (context) => const SignupPage(), // <-- Add this line
+        '/signup': (context) => SignupPage(),
+        '/login': (context) => const LoginScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/register': (context) => const MemberRegistrationScreen(),
+        '/admin-register': (context) => const AdminRegistrationScreen(),
       },
     );
   }

@@ -1,8 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../services/auth_service.dart';
 
 class SignupPage extends StatelessWidget {
-  const SignupPage({super.key});
+  SignupPage({super.key});
+  
+  final AuthService _authService = AuthService();
+
+  Future<void> _signInWithGoogle(BuildContext context) async {
+    try {
+      final userCredential = await _authService.signInWithGoogle();
+      
+      if (userCredential != null && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Google sign-in successful: ${userCredential.user?.email}')),
+        );
+        Navigator.pushReplacementNamed(context, '/home');
+      }
+    } catch (error) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Google sign-in error: $error')),
+        );
+      }
+    }
+  }
+
+  Future<void> _signInWithFacebook(BuildContext context) async {
+    try {
+      final userCredential = await _authService.signInWithFacebook();
+      
+      if (userCredential != null && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Facebook sign-in successful: ${userCredential.user?.email}')),
+        );
+        Navigator.pushReplacementNamed(context, '/home');
+      }
+    } catch (error) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Facebook sign-in error: $error')),
+        );
+      }
+    }
+  }
+
+  Future<void> _signInWithLinkedIn(BuildContext context) async {
+    try {
+      // LinkedIn sign-in implementation would go here
+      // Note: signin_with_linkedin package may need additional configuration
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('LinkedIn sign-in coming soon!')),
+        );
+      }
+      // Show coming soon message or implement LinkedIn OAuth
+    } catch (error) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('LinkedIn sign-in error: $error')),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,9 +170,7 @@ class SignupPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        onPressed: () {
-                          // TODO: Implement Google sign-in
-                        },
+                        onPressed: () => _signInWithGoogle(context),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -141,9 +199,7 @@ class SignupPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        onPressed: () {
-                          // TODO: Implement Facebook sign-in
-                        },
+                        onPressed: () => _signInWithFacebook(context),
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -168,9 +224,7 @@ class SignupPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        onPressed: () {
-                          // TODO: Implement LinkedIn sign-in
-                        },
+                        onPressed: () => _signInWithLinkedIn(context),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
